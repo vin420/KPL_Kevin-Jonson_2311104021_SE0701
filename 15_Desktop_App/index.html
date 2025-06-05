@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Simple Auth App</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; max-width: 400px; margin: auto; }
+    input, button { display: block; width: 100%; margin: 10px 0; padding: 8px; }
+    .status { margin-top: 15px; color: red; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Register</h2>
+  <input type="text" id="reg-username" placeholder="Username" />
+  <input type="password" id="reg-password" placeholder="Password" />
+  <button onclick="register()">Register</button>
+
+  <h2>Login</h2>
+  <input type="text" id="log-username" placeholder="Username" />
+  <input type="password" id="log-password" placeholder="Password" />
+  <button onclick="login()">Login</button>
+
+  <div class="status" id="status"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

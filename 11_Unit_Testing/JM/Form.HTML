@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>TP Modul 12 - Pangkat Custom</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    input, button {
+      padding: 10px;
+      margin: 5px 0;
+      font-size: 16px;
+    }
+    #output {
+      margin-top: 15px;
+      font-weight: bold;
+      color: darkblue;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Program Hitung Pangkat (Custom Rule)</h2>
+
+  <label>Angka a:</label><br>
+  <input type="number" id="inputA" placeholder="Masukkan nilai a"><br>
+
+  <label>Angka b (pangkat):</label><br>
+  <input type="number" id="inputB" placeholder="Masukkan nilai b"><br>
+
+  <button onclick="proses()">Hitung Pangkat</button>
+
+  <div id="output"></div>
+
+  <script>
+    function CariNilaiPangkat(a, b) {
+      if (b === 0) return 1;
+      if (b < 0) return -1;
+      if (b > 10 || a > 100) return -2;
+
+      let hasil = 1;
+      for (let i = 0; i < b; i++) {
+        hasil *= a;
+
+        if (hasil > Number.MAX_SAFE_INTEGER) {
+          return -3;
+        }
+      }
+
+      return hasil;
+    }
+
+    function proses() {
+      const a = parseInt(document.getElementById("inputA").value);
+      const b = parseInt(document.getElementById("inputB").value);
+      const hasil = CariNilaiPangkat(a, b);
+
+      let outputText = "";
+
+      switch (hasil) {
+        case -1:
+          outputText = "Pangkat negatif tidak diperbolehkan.";
+          break;
+        case -2:
+          outputText = "Nilai a > 100 atau b > 10 tidak diperbolehkan.";
+          break;
+        case -3:
+          outputText = "Hasil terlalu besar (overflow).";
+          break;
+        default:
+          outputText = `Hasil dari ${a} pangkat ${b} adalah ${hasil}`;
+      }
+
+      document.getElementById("output").innerText = outputText;
+    }
+  </script>
+
+</body>
+</html>
